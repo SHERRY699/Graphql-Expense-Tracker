@@ -1,20 +1,22 @@
-// npm install @apollo/server express graphql cors
 import http from "http";
 import cors from "cors";
+import dotenv from "dotenv";
 import express from "express";
+import ConnectDb from "./db/db.js";
+import typeDefs from "./typeDefs/index.js";
+import resolvers from "./resolvers/index.js";
 import { ApolloServer } from "@apollo/server";
-import userTypeDef from "./typeDefs/user.typeDefs.js";
-import { resolvers } from "./resolvers/userResolver.js";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
 
 const app = express();
-
+dotenv.config();
+ConnectDb();
 const httpServer = http.createServer(app);
 
 const server = new ApolloServer({
-  typeDefs: userTypeDef,
-  resolvers,
+  typeDefs: typeDefs,
+  resolvers: resolvers,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 

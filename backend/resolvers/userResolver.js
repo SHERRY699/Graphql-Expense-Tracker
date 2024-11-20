@@ -1,6 +1,6 @@
 import { users } from "../dummyData/data.js";
 
-export const resolvers = {
+const userResolver = {
   Query: {
     users: () => {
       return users;
@@ -10,3 +10,5 @@ export const resolvers = {
     },
   },
 };
+
+export default userResolver;

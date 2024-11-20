@@ -1,4 +1,3 @@
-// Hardcoded array of 5 users
 const users = [
   {
     _id: "1",
@@ -42,7 +41,6 @@ const users = [
   },
 ];
 
-// Hardcoded array of 5 transactions
 const transactions = [
   {
     _id: "1",
